@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/JOSEPH-ONOFIOK/DeFiWebChains/static/css/main.4e95ce77.css",
-    "main.js": "/JOSEPH-ONOFIOK/DeFiWebChains/static/js/main.2a5f458f.js",
-    "static/media/back3.png": "/JOSEPH-ONOFIOK/DeFiWebChains/static/media/back3.97649600ee2614fb014f.png",
-    "static/media/oneinch.png": "/JOSEPH-ONOFIOK/DeFiWebChains/static/media/oneinch.9a9a858b3466df6df11f.png",
-    "index.html": "/JOSEPH-ONOFIOK/DeFiWebChains/index.html",
-    "main.4e95ce77.css.map": "/JOSEPH-ONOFIOK/DeFiWebChains/static/css/main.4e95ce77.css.map",
-    "main.2a5f458f.js.map": "/JOSEPH-ONOFIOK/DeFiWebChains/static/js/main.2a5f458f.js.map"
+    "main.css": "/static/css/main.4b653beb.css",
+    "main.js": "/static/js/main.a5cf41bc.js",
+    "static/media/back3.png": "/static/media/back3.97649600ee2614fb014f.png",
+    "static/media/oneinch.png": "/static/media/oneinch.9a9a858b3466df6df11f.png",
+    "index.html": "/index.html",
+    "main.4b653beb.css.map": "/static/css/main.4b653beb.css.map",
+    "main.a5cf41bc.js.map": "/static/js/main.a5cf41bc.js.map"
   },
   "entrypoints": [
-    "static/css/main.4e95ce77.css",
-    "static/js/main.2a5f458f.js"
+    "static/css/main.4b653beb.css",
+    "static/js/main.a5cf41bc.js"
   ]
 }
