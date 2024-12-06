@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/JOSEPH-ONOFIOK/DeFiWebChains.git/static/css/main.73cd75ad.css",
+    "main.js": "/JOSEPH-ONOFIOK/DeFiWebChains.git/static/js/main.8c1a3d7f.js",
+    "static/media/back3.png": "/JOSEPH-ONOFIOK/DeFiWebChains.git/static/media/back3.97649600ee2614fb014f.png",
+    "static/media/oneinch.png": "/JOSEPH-ONOFIOK/DeFiWebChains.git/static/media/oneinch.9a9a858b3466df6df11f.png",
+    "index.html": "/JOSEPH-ONOFIOK/DeFiWebChains.git/index.html",
+    "main.73cd75ad.css.map": "/JOSEPH-ONOFIOK/DeFiWebChains.git/static/css/main.73cd75ad.css.map",
+    "main.8c1a3d7f.js.map": "/JOSEPH-ONOFIOK/DeFiWebChains.git/static/js/main.8c1a3d7f.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.73cd75ad.css",
+    "static/js/main.8c1a3d7f.js"
+  ]
+}
