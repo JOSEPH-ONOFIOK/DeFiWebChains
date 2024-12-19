@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/DeFiWebChains/static/css/main.e48f264c.css",
-    "main.js": "/DeFiWebChains/static/js/main.1052632b.js",
+    "main.css": "/DeFiWebChains/static/css/main.4f2460e8.css",
+    "main.js": "/DeFiWebChains/static/js/main.d3f4168c.js",
     "static/media/back3.png": "/DeFiWebChains/static/media/back3.97649600ee2614fb014f.png",
     "static/media/oneinch.png": "/DeFiWebChains/static/media/oneinch.9a9a858b3466df6df11f.png",
     "index.html": "/DeFiWebChains/index.html",
-    "main.e48f264c.css.map": "/DeFiWebChains/static/css/main.e48f264c.css.map",
-    "main.1052632b.js.map": "/DeFiWebChains/static/js/main.1052632b.js.map"
+    "main.4f2460e8.css.map": "/DeFiWebChains/static/css/main.4f2460e8.css.map",
+    "main.d3f4168c.js.map": "/DeFiWebChains/static/js/main.d3f4168c.js.map"
   },
   "entrypoints": [
-    "static/css/main.e48f264c.css",
-    "static/js/main.1052632b.js"
+    "static/css/main.4f2460e8.css",
+    "static/js/main.d3f4168c.js"
   ]
 }
