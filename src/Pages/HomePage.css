@@ -156,7 +156,9 @@ body {
     display: flex;
     justify-content: center;
     padding: 20px;
-    background-color: #333;
+    background-color:#101019;
+    ;
+    
   }
   
   .social-links {
@@ -165,7 +167,7 @@ body {
   }
   
   .social-icon {
-    width: 40px;
+    width: 35px;
     height: 40px;
     object-fit: contain;
   }
